@@ -1,0 +1,1199 @@
+/*
+  Reset básico e definição da fonte padrão do projeto.
+*/
+body {
+    margin: 0;
+    /* 2. APLICANDO A FONTE 'INTER' A TODO O SITE */
+    /* A segunda fonte ('sans-serif') serve como um fallback caso 'Inter' não carregue. */
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Um cinza claro para ver o contêiner branco se destacar */
+}
+
+.home-container {
+    background-color: #FFFFFF;
+
+    /* 3. MELHORIA DE RESPONSIVIDADE PARA TELAS GRANDES */
+    /* Define uma largura máxima para o conteúdo não esticar demais. */
+    /* Com uma largura máxima, 'margin: 0 auto' centraliza o container na tela. */
+    margin: 0 auto;
+
+    /* 4. PADDING RESPONSIVO (Mobile First) */
+    /* Começamos com um padding menor, ideal para celulares. */
+    padding: 0 20px;
+}
+
+
+/* 5. MEDIA QUERY: AJUSTE PARA TELAS MAIORES */
+/* Quando a tela tiver no MÍNIMO 768px de largura (tablets e desktops)... */
+@media (min-width: 768px) {
+    .home-container {
+        /* ...aumentamos o padding lateral para o valor do seu design original. */
+        padding: 0 20px;
+    }
+}
+
+/* --- Estilos do Cabeçalho --- */
+
+.site-header {
+    background-color: #FFFFFF; /* Fundo branco */
+    height: 80px;
+
+    /* Usando Flexbox para o layout horizontal */
+    display: flex;
+    justify-content: space-between; /* MÁGICA: Empurra o logo para a esquerda e o menu para a direita */
+    align-items: center; /* Centraliza os itens verticalmente nos 80px de altura */
+
+    /* Padding responsivo: 20px no mobile, 40px no desktop */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* O logo já tem o tamanho definido no HTML, o que é ótimo para performance. */
+.site-header .logo img {
+    display: block; /* Remove qualquer espaçamento extra que o navegador possa adicionar a uma imagem */
+}
+
+
+/* Estilos da Navegação */
+.header-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove as "bolinhas" da lista */
+
+    display: flex; /* Deixa os itens do menu em linha */
+    align-items: center;
+    gap: 40px; /* Espaçamento moderno entre os itens do menu */
+}
+
+.header-nav a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: #111827; /* Um preto suave, bom para leitura */
+    
+    /* Configuração da fonte: Inter, SemiBold (600), 14px */
+    font-weight: 600;
+    font-size: 14px;
+
+    /* Efeito suave para interação do usuário */
+    transition: color 0.2s ease-in-out;
+}
+
+/* Efeito ao passar o mouse sobre os links do menu */
+.header-nav a:hover {
+    color: #4f46e5; /* Uma cor de destaque */
+}
+
+
+/* --- Media Query para Responsividade do Cabeçalho --- */
+
+/* Escondemos o menu de navegação em telas pequenas (mobile-first) */
+.header-nav {
+    display: none;
+}
+
+/* Para telas maiores (tablets e desktops) */
+@media (min-width: 1024px) {
+    /* Reexibimos o menu de navegação */
+    .header-nav {
+        display: block;
+    }
+
+    /* Aumentamos o padding lateral do cabeçalho */
+    .site-header {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+/* --- Estilos da Hero Section --- */
+
+.hero-section {
+    /* Imagem de fundo e cor de fallback */
+    background-color: #333;
+    background-image: url('../images/Hero\ Section\ Background.png'); /* << Substitua pelo caminho da sua imagem */
+    background-size: cover;
+    background-position: center;
+
+    /* Layout Mobile (Vertical) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Escondemos a imagem da esquerda em telas pequenas para economizar espaço */
+.hero-image-container {
+    display: none; 
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo no mobile */
+    gap: 32px;
+}
+
+.hero-title {
+    color: #FFBB31;
+    font-weight: 700; /* Bold */
+    font-size: 36px; /* Tamanho reduzido para mobile */
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+.hero-subtitle {
+    color: #FFFFFF;
+    font-weight: 700; /* Bold */
+    font-size: 20px; /* Tamanho reduzido para mobile */
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+.hero-button {
+    display: inline-block;
+    background-color: #FFBB31;
+    color: #FFFFFF;
+    border-radius: 10px;
+    
+    padding: 20px 40px; /* Padding para mobile */
+    max-width: 406px; /* Largura máxima */
+
+    text-decoration: none;
+    text-align: center;
+    font-weight: 800; /* Extra Bold */
+    font-size: 24px; /* Tamanho reduzido para mobile */
+
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Animação para a imagem deslizar da esquerda */
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animação para o texto aparecer suavemente */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA HERO PARA DESKTOP (COM ANIMAÇÕES)            */
+/* Substitua o seu bloco @media por este.                 */
+/* ======================================================= */
+
+@media (min-width: 1200px) {
+
+    .hero-section {
+        flex-direction: row;
+        gap: 300px; 
+        text-align: left;
+        height: 650px;
+        padding: 0 80px 0 200px;
+        /* Adicionado para esconder o overflow da animação inicial */
+        overflow-x: hidden; 
+    }
+    
+    .hero-image-container {
+        display: block;
+        width: 412px;
+        height: 648px;
+
+        /* APLICA A ANIMAÇÃO DE SLIDE-IN */
+        animation: slideInFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    .hero-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .hero-content {
+        align-items: flex-start;
+        justify-content: center;
+        gap: auto;
+        height: 300px;
+        width: 585px;
+
+        /* APLICA A ANIMAÇÃO DE FADE-IN */
+        /* Começa invisível para a animação funcionar */
+        opacity: 0; 
+        /* Animação com um pequeno atraso para começar após a imagem */
+        animation: fadeIn 1s ease-out 0.6s forwards; 
+    }
+
+    .hero-title {
+        font-size: 48px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-subtitle {
+        font-size: 24px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 406px;
+        height: 98px;
+        font-size: 32px;
+        padding: 0;
+    }
+}
+
+/* --- Estilos da About Section --- */
+
+.about-section {
+    background-color: #FFFFFF;
+    padding: 60px 20px; /* Padding generoso para mobile */
+
+    /* Layout Mobile (Vertical) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Espaço entre a imagem e o texto no mobile */
+}
+
+/* Colocamos a imagem primeiro no mobile, e o texto depois */
+.about-image-container {
+    order: 1; /* Garante que a imagem venha primeiro */
+    width: 100%;
+    max-width: 546px; /* Limita o tamanho da imagem */
+}
+.about-content {
+    order: 2; /* Garante que o texto venha depois */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo no mobile */
+    gap: 20px;
+}
+
+.about-image-container img {
+    width: 100%; /* Imagem responsiva */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para mobile */
+}
+
+.about-title {
+    font-weight: 700; /* Bold */
+    font-size: 32px; /* Tamanho ajustado para mobile */
+    color: #1E1E1E;
+    margin: 0;
+}
+
+.about-divider {
+    width: 180px; /* Tamanho ajustado para mobile */
+}
+
+.about-text {
+    font-weight: 400; /* Regular */
+    font-size: 16px; /* Tamanho ajustado para mobile */
+    color: #333333;
+    line-height: 1.6; /* Melhora a legibilidade */
+    margin: 0;
+    max-width: 600px; /* Limita a largura do texto para não ficar muito largo */
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA ABOUT SECTION PARA DESKTOP (Layout do Figma) */
+/* ======================================================= */
+
+@media (min-width: 1280px) {
+
+    .about-section {
+        height: 530px;
+        /* Reverte para o layout horizontal do Figma */
+        flex-direction: row;
+        justify-content: flex-start; /* Alinhamento à esquerda */
+        align-items: center
+        ;
+        
+        /* 'margem esquerda 160 margem direita a 60' */
+        padding: 0 60px 0 250px;
+        /* 'espaço de 135' */
+        gap: 350px;
+    }
+
+    /* Restauramos a ordem para o layout do Figma */
+    .about-image-container { order: 2; }
+    .about-content { order: 1; }
+
+    .about-content {
+        width: 496px;
+        height: 334px;
+        align-items: flex-start; /* Alinha o texto à esquerda */
+        text-align: justify;
+        justify-content: flex-start; /* Alinha o conteúdo ao topo */
+        /* 'espaçamento entre itens 27' */
+        gap: 27px;
+    }
+
+    .about-title {
+        font-size: 48px;
+    }
+    
+    .about-divider {
+        width: 234px;
+    }
+
+    .about-text {
+        font-size: 20px;
+    }
+
+    .about-image-container {
+        width: 546px;
+        height: 364px;
+    }
+
+    .about-image-container img {
+        height: 100%;
+        object-fit: cover; /* Garante que a imagem preencha o container sem distorcer */
+        /* 'raio de canto 15' */
+        border-radius: 15px; 
+        /* 'efeito sombreado X0Y0 desfoque oito' */
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* --- Estilos da Card Section --- */
+
+.card-section {
+    background-color: #FFFFFF;
+    padding: 60px 20px; /* Padding mobile */
+}
+
+.cards-wrapper {
+    /* Layout Mobile (Vertical) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.card-container {
+    position: relative; /* ESSENCIAL para o efeito de sobreposição */
+    width: 100%;
+    max-width: 415px; /* Tamanho do card menor como base no mobile */
+}
+
+/* Estilo genérico para AMBOS os cards (padrão e hover) */
+.card {
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
+    width: 100%;
+    height: 100%;
+
+    /* Posicionamento para sobrepor um ao outro */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* Efeito de transição suave */
+    transition: opacity 0.5s ease;
+
+    /* Layout interno dos cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.card-default {
+    background-color: #FAFAFA;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover {
+    background-color: #FFB828;
+    opacity: 0; /* Começa invisível */
+    justify-content: space-around; /* Espaça melhor o conteúdo do hover */
+    padding: 25px 20px;
+}
+
+/* A MÁGICA DO HOVER: Quando passar o mouse no container... */
+.card-container:hover .card-hover {
+    opacity: 1; /* ... o card de hover se torna visível */
+}
+
+/* --- Estilos do Conteúdo dos Cards --- */
+.card-icon {
+    width: 55px;
+    height: 55px;
+}
+
+.card-title { /* Título do card padrão */
+    font-weight: 400; /* Regular */
+    font-size: 24px;
+    color: #1E1E1E;
+    margin: 0;
+}
+.card-text { /* Texto do card padrão */
+    font-weight: 400; /* Regular */
+    font-size: 14px;
+    color: #828282;
+    margin: 0;
+}
+
+.card-title-hover { /* Título do card hover */
+    font-weight: 600; /* SemiBold */
+    font-size: 24px;
+    color: #000000;
+    margin: 0;
+}
+.card-text-hover { /* Texto do card hover */
+    font-weight: 500; /* Medium */
+    font-size: 14px;
+    color: #000000;
+    margin: 0;
+}
+
+.card-button {
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    width: 120px;
+    height: 35px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    font-weight: 700; /* Bold */
+    font-size: 14px;
+    color: #000000;
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA CARD SECTION PARA DESKTOP (Layout do Figma)  */
+/* ======================================================= */
+
+@media (min-width: 1440px) {
+
+    .card-section {
+        height: 400px;
+        padding: 0 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cards-wrapper {
+        width: 1382px;
+        height: 219px;
+        flex-direction: row; /* Volta a ser horizontal */
+        justify-content: center;
+        gap: 40px;
+    }
+
+    /* Definindo os tamanhos exatos dos cards para desktop */
+    .card-container.card-size-small {
+        width: 415px;
+        height: 180px;
+    }
+    .card-container.card-size-large {
+        width: 472px;
+        height: 219px;
+    }
+}
+
+/* --- Estilos da Depoimento Section --- */
+
+.testimonial-section {
+    background-color: #FFFFFF;
+    padding: 0; /* Padding para mobile */
+
+    /* Layout Mobile (Vertical) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 200px;
+}
+
+.testimonial-image-container {
+    width: 100%;
+    max-width: 444px; /* Limita o tamanho no mobile */
+}
+
+.testimonial-image-container img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para mobile */
+}
+
+.testimonial-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza no mobile */
+    text-align: center;
+    margin-top: 40px;
+    background: transparent;
+    gap: 25px;
+}
+
+.testimonial-title {
+    font-weight: 700; /* Bold */
+    font-size: 32px; /* Ajustado para mobile */
+    color: #1E1E1E;
+    margin: 0;
+}
+
+.testimonial-divider {
+    width: 180px; /* Ajustado para mobile */
+}
+
+.testimonial-quote {
+    margin: 0; /* Remove margem padrão do blockquote */
+    font-style: normal; /* Remove itálico padrão do blockquote/cite */
+}
+
+.testimonial-quote p {
+    margin: 0 0 20px 0; /* Espaço entre o texto e o autor */
+    font-weight: 400; /* Regular */
+    font-size: 18px; /* Ajustado para mobile */
+    line-height: 1.7; /* Melhora a legibilidade */
+    color: #333333;
+}
+
+.testimonial-quote cite {
+    font-weight: 600; /* SemiBold */
+    font-size: 16px;
+    color: #1E1E1E;
+    font-style: normal; /* Remove itálico padrão do cite */
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA DEPOIMENTO SECTION PARA DESKTOP (Layout do Figma) */
+/* ======================================================= */
+
+@media (min-width: 1280px) {
+
+    .testimonial-section {
+        height: 769px;
+        flex-direction: row; /* Volta ao layout horizontal */
+        justify-content: center;
+        align-items: center;
+
+        /* 'espaçamento esquerdo 141 espaçamento direito 160' */
+        padding: 0;
+        /* 'espaço entre itens 135' */
+        gap: 300px;
+    }
+
+    .testimonial-image-container {
+        width: 444px;
+        height: 566px;
+        flex-shrink: 0; /* Impede que a imagem encolha */
+    }
+    .testimonial-image-container img {
+        height: 100%;
+        object-fit: cover;
+        /* 'sombra projetada X0Y0 desfoque oito' */
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .testimonial-content {
+        width: 584px;
+        height: 569px;
+        margin-top: 40px;
+        background: transparent;
+        align-items: flex-start; /* Alinhamento à esquerda */
+        text-align: left;
+        /* 'espaçamento entre as de 31' */
+        gap: 31px;
+    }
+
+    .testimonial-title {
+        font-size: 48px;
+    }
+
+    .testimonial-divider {
+        width: 330px;
+    }
+
+    .testimonial-quote p {
+        font-size: 20px;
+    }
+
+    .testimonial-quote cite {
+        font-size: 16px;
+    }
+}
+
+/* --- Estilos da Projects Section --- */
+
+.project-section {
+    background-color: #FFFFFF;
+    padding: 60px 20px; /* Padding mobile */
+
+    /* Layout Mobile (Vertical) */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    gap: 40px;
+}
+
+.project-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* No mobile, o header também é centralizado */
+    text-align: center;
+    gap: 20px;
+}
+
+/* Usamos a classe .section-title que talvez já exista, mas podemos especificá-la */
+.project-header .section-title {
+    font-weight: 700; /* Bold */
+    font-size: 32px; /* Ajustado para mobile */
+    color: #1E1E1E;
+    margin: 0;
+}
+
+.project-divider {
+    width: 100%;
+    max-width: 536px;
+}
+
+.projects-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Empilha os projetos no mobile */
+    align-items: center;
+    gap: 30px;
+}
+
+.project-card {
+    width: 100%;
+    max-width: 446px; /* Usa o maior card como base no mobile */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.project-caption {
+    font-weight: 400; /* Regular */
+    font-size: 18px; /* Ajustado para mobile */
+    color: #1E1E1E;
+    margin: 0;
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA PROJECTS SECTION PARA DESKTOP (Layout do Figma) */
+/* ======================================================= */
+
+@media (min-width: 1440px) {
+
+    .project-section {
+        height: 450px;
+        /* 'espaço superior de 70 inferior de 50' */
+        padding: 70px 20px 50px; 
+        /* 'espaço entre itens de 80' */
+        gap: 80px;
+    }
+
+    .project-header {
+        width: 1358px; /* Largura igual à do grid abaixo */
+        align-items: flex-start; /* Alinhamento à esquerda, como no seu plano */
+        text-align: left;
+    }
+
+    .project-header .section-title {
+        font-size: 48px;
+    }
+
+    .project-divider {
+        width: 536px;
+    }
+
+    .projects-grid {
+        width: 1358px;
+        height: 270px;
+        flex-direction: row; /* Volta ao layout horizontal */
+        align-items: center;
+        justify-content: flex-start; /* Alinha os cards à esquerda do container */
+        /* 'espaçamento entre itens 53' */
+        gap: 53px;
+    }
+
+    /* Estilos específicos para cada card no desktop */
+    .project-card {
+        text-align: left;
+        height: auto; /* A altura será definida pelo conteúdo */
+    }
+    
+    /* Para não precisarmos de classes extras, usamos :nth-child() */
+    .projects-grid .project-card:nth-child(1) {
+        width: 396px;
+    }
+    .projects-grid .project-card:nth-child(1) .project-image {
+        width: 392px; height: 220px;
+    }
+
+    .projects-grid .project-card:nth-child(2) {
+        width: 446px;
+    }
+    .projects-grid .project-card:nth-child(2) .project-image {
+        width: 100%; /* Usamos 100% para evitar o overflow */
+        height: 221px; 
+    }
+
+    .projects-grid .project-card:nth-child(3) {
+        width: 408px;
+    }
+    .projects-grid .project-card:nth-child(3) .project-image {
+        width: 408px; height: 220px;
+    }
+
+    .project-caption {
+        font-size: 20px;
+    }
+}
+
+/* --- Estilos da Results Section --- */
+
+.results-section {
+    /* 'preenchimento dela é uma imagem' */
+    background-image: url('../images/Results\ Section\ Background.png');
+    background-size: cover;
+    background-color: #FFFFFF;
+    background-position: center;
+    padding: 60px 20px; /* Padding mobile */
+}
+
+.stats-wrapper {
+    /* Layout Mobile (Vertical) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.stat-item {
+    width: 249px; /* A largura fixa funciona bem aqui */
+    /* 'fluxo vertical alinhamento ao centro' */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 'espaçamento entre itens 20' */
+    gap: 20px;
+}
+
+.stat-icon {
+    width: 130px;
+    height: 130px;
+}
+
+.stat-number {
+    font-weight: 800; /* ExtraBold */
+    font-size: 36px;
+    color: #FFBB31;
+    margin: 0;
+}
+
+.stat-label {
+    font-weight: 800; /* ExtraBold */
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0;
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA RESULTS SECTION PARA DESKTOP (Layout do Figma) */
+/* ======================================================= */
+@media (min-width: 1280px) {
+    .results-section {
+        height: 508px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* 'espaçamento superior e inferior 118', 'esquerdo 152 e direito também' */
+        padding: 118px 152px;
+    }
+
+    .stats-wrapper {
+        width: 1233px;
+        height: 271px;
+        flex-direction: row; /* Volta ao layout horizontal */
+        justify-content: center;
+        align-items: center;
+        /* 'espaçamento entre itens 110' */
+        gap: 110px;
+        padding: 23px 0;
+    }
+}
+
+/* --- Estilos da Partners Section --- */
+
+.partners-section {
+    background-color: #FFFFFF;
+    padding: 60px 20px; /* Padding para mobile */
+}
+
+.partners-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center;
+    align-items: center;
+    gap: 50px 80px; /* Espaçamento vertical e horizontal para mobile */
+    max-width: 600px; /* Limita a largura no mobile */
+    margin: 0 auto; /* Centraliza o wrapper */
+}
+
+.partners-wrapper img {
+    height: 50px; /* Altura base para os logos no mobile */
+    width: auto;
+    max-width: 150px; /* Largura máxima para cada logo */
+    object-fit: contain;
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA PARTNERS SECTION PARA DESKTOP (Layout do Figma) */
+/* ======================================================= */
+
+@media (min-width: 1280px) {
+    .partners-section {
+        height: 162px;
+        /* 'esquerdo e direito 160' */
+        padding: 0 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .partners-wrapper {
+        flex-wrap: nowrap; /* Impede a quebra de linha no desktop */
+        max-width: none; /* Remove a limitação de largura */
+        /* 'espaçamento entre item 190' */
+        gap: 190px;
+    }
+    
+    .partners-wrapper img {
+        height: auto; /* A altura se ajusta à largura original */
+        max-width: none; /* Remove a limitação de largura */
+    }
+}
+
+/* --- Estilos da Contact Section --- */
+
+.contact-section {
+    /* 'no excel background uma imagem' (Acredito que quis dizer "no seu background") */
+    background-image: url('../images/Contato\ Section\ Background.png');
+    background-size: cover;
+    background-color: #FFFFFF;
+    background-position: center;
+
+    /* 'fluxo vertical alinhamento ao centro' */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    padding: 100px 20px; /* Padding para mobile */
+}
+
+.contact-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px; /* Espaço para o subtítulo no mobile */
+}
+
+/* Reutilizando a classe .section-title, mas podemos especificar se necessário */
+.contact-section .section-title {
+    font-weight: 700; /* Bold */
+    font-size: 32px; /* Ajustado para mobile */
+    color: #FFFFFF; /* Cor branca para contrastar com o fundo escuro */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    margin: 0;
+}
+
+.contact-divider {
+    width: 180px; /* Ajustado para mobile */
+    filter: brightness(0) invert(1); /* Deixa o vetor SVG preto em branco */
+}
+
+.contact-subtitle {
+    font-weight: 400;
+    font-size: 18px;
+    color: #4C4C4C;
+    line-height: 1.6;
+    max-width: 800px; /* <--- AUMENTE ESTE VALOR */
+    margin: 0 0 40px 0;
+}
+
+.contact-button {
+    /* Dimensões e estilo do botão */
+    width: 100%;
+    max-width: 406px;
+    height: 98px;
+    background-color: #FFBB31;
+    border-radius: 10px;
+
+    /* Alinhamento do texto interno */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Estilo do texto */
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 800; /* ExtraBold */
+    font-size: 24px; /* Ajustado para mobile */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA CONTACT SECTION PARA DESKTOP (Layout do Figma) */
+/* ======================================================= */
+
+@media (min-width: 1024px) {
+    .contact-section {
+        height: 450px;
+        justify-content: center; /* Alinha o conteúdo verticalmente no centro */
+        /* 'espaçamento superior 200 e inferior 70' */
+        padding: 200px 20px 70px;
+        /* 'espaçamento entre itens de 50' */
+        gap: 50px;
+    }
+
+    .contact-header {
+        height: 78.3px;
+        margin-bottom: 0; /* Remove a margem para usar o gap do pai */
+    }
+
+    .contact-section .section-title {
+        font-size: 48px;
+        color: #1E1E1E; /* Voltando para a cor original no desktop */
+        text-shadow: none;
+    }
+
+    .contact-divider {
+        filter: none; /* Remove o filtro para o vetor voltar à cor original */
+        width: 250px;
+    }
+
+    .contact-subtitle {
+        font-size: 32px;
+        margin: 0;
+    }
+
+    .contact-button {
+        width: 406px; /* Largura fixa no desktop */
+        font-size: 32px;
+        /* 'sombra projetada 10 4Y4 desfoque quatro' */
+        /* O "10" parece ser um typo, geralmente é X Y Blur Cor. Vou usar 0 X */
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        text-shadow: none; /* Sombra no botão e não no texto */
+    }
+}
+
+/* --- Estilos da Location Section --- */
+
+.location-section {
+    background-color: #F5F5F5;
+    /* 'espaçamento superior de 40 inferior também' */
+    padding: 40px 20px; /* Padding ajustado para mobile */
+
+    /* 'fluxo vertical alinhamento automático' */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.google-map {
+    width: 100%; /* Ocupa toda a largura no mobile */
+    height: 450px; /* Altura padrão para mobile */
+    
+    /* SUAS NOVAS ADIÇÕES */
+    border-radius: 15px; /* 'raio de canto 15' */
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1); /* 'sombra de efeito' */
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA LOCATION SECTION PARA DESKTOP (Layout do Figma) */
+/* ======================================================= */
+
+@media (min-width: 1440px) {
+    .location-section {
+        height: 700px;
+        /* 'espaçamento esquerdo de 67 direito também' */
+        padding: 40px 67px;
+    }
+    
+    .google-map {
+        /* '1263 de largura por 707 de altura' */
+        width: 1263px;
+        height: 707px;
+    }
+}
+
+/* --- Estilos da Frase Section --- */
+
+.phrase-section {
+    /* 'seu background é uma imagem' */
+    background-image:url('../images/Frase\ Section\ Background.png');
+    background-size: cover;
+    background-position: center;
+
+    /* 'fluxo vertical' e 'alinhamento central' */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 20px; /* Padding para mobile */
+}
+
+.phrase-text {
+    color: #FFFFFF;
+    font-weight: 500; /* Medium */
+    font-size: 24px; /* Ajustado para mobile */
+    line-height: 1.5;
+    text-align: center;
+    max-width: 650px; /* Largura máxima para não ficar muito largo no mobile */
+    margin: 0;
+}
+
+.phrase-divider {
+    width: 180px; /* Ajustado para mobile */
+    margin-top: 20px;
+    /* Truque para deixar o vetor SVG preto na cor branca */
+}
+
+
+/* ======================================================= */
+/* ESTILOS DA FRASE SECTION PARA DESKTOP (Layout do Figma) */
+/* ======================================================= */
+@media (min-width: 1024px) {
+    .phrase-section {
+        height: 120px;
+        /* 'espaçamento superior inferior 119' e 'esquerdo direito 89' */
+        padding: 119px 89px;
+        /* 'espaçamento 10 entre itens' */
+        gap: 10px;
+    }
+
+    .phrase-text {
+        width: 650px;
+        font-size: 36px;
+    }
+
+    .phrase-divider {
+        width: 234px;
+        margin-top: 0; /* Remove a margem para usar o gap do pai */
+        color: #FFBB31;
+    }
+}
+
+/* --- Estilos do Footer --- */
+
+.site-footer {
+    background-color: #FFFFFF;
+    padding: 30px 20px; /* Padding para mobile */
+
+    /* Layout Mobile (Vertical) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    border-top: 1px solid #E5E7EB; /* Uma linha sutil para separar do conteúdo */
+}
+
+.copyright-text {
+    /* 'regular 12 8E8E8E' */
+    font-size: 12px;
+    font-weight: 400;
+    color: #8E8E8E;
+    margin: 0;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    /* 'espaçamento entre eles 15 Pixel' */
+    gap: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-icons a:hover {
+    transform: scale(1.15); /* Efeito de zoom ao passar o mouse */
+}
+
+.social-icons img {
+    width: 22px;
+    height: 22px;
+}
+
+
+/* ======================================================= */
+/* ESTILOS DO FOOTER PARA DESKTOP (Layout do Figma)        */
+/* ======================================================= */
+
+@media (min-width: 768px) {
+    .site-footer {
+        height: 40px;
+        flex-direction: row; /* Volta ao layout horizontal */
+        /* Empurra o copyright para a esquerda e os ícones para a direita */
+        justify-content: space-between;
+        
+        /* 'margem de 40' left/right, 'margem de 35' top/bottom */
+        padding: 35px 40px; 
+    }
+}
