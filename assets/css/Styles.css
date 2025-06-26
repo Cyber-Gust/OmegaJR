@@ -1,6 +1,12 @@
 /*
   Reset básico e definição da fonte padrão do projeto.
 */
+
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     /* 2. APLICANDO A FONTE 'INTER' A TODO O SITE */
@@ -38,6 +44,12 @@ body {
     background-color: #FFFFFF; /* Fundo branco */
     height: 80px;
 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 96%;
+    z-index: 1000;
+
     /* Usando Flexbox para o layout horizontal */
     display: flex;
     justify-content: space-between; /* MÁGICA: Empurra o logo para a esquerda e o menu para a direita */
@@ -51,6 +63,8 @@ body {
 /* O logo já tem o tamanho definido no HTML, o que é ótimo para performance. */
 .site-header .logo img {
     display: block; /* Remove qualquer espaçamento extra que o navegador possa adicionar a uma imagem */
+    width: 80%;
+    height: 80%; /* Largura fixa para o logo */
 }
 
 
@@ -79,7 +93,7 @@ body {
 
 /* Efeito ao passar o mouse sobre os links do menu */
 .header-nav a:hover {
-    color: #4f46e5; /* Uma cor de destaque */
+    color: #ffd000; /* Uma cor de destaque */
 }
 
 
@@ -97,6 +111,12 @@ body {
         display: block;
     }
 
+    .site-header .logo img {
+    display: block; /* Remove qualquer espaçamento extra que o navegador possa adicionar a uma imagem */
+    width: 100%;
+    height: 100%; /* Largura fixa para o logo */
+    }
+
     /* Aumentamos o padding lateral do cabeçalho */
     .site-header {
         padding-left: 40px;
@@ -112,6 +132,7 @@ body {
     background-image: url('../images/Hero\ Section\ Background.png'); /* << Substitua pelo caminho da sua imagem */
     background-size: cover;
     background-position: center;
+    margin-top: 80px;
 
     /* Layout Mobile (Vertical) */
     display: flex;
@@ -207,7 +228,7 @@ body {
 
     .hero-section {
         flex-direction: row;
-        gap: 300px; 
+        gap: 400px; 
         text-align: left;
         height: 650px;
         padding: 0 80px 0 200px;
@@ -218,7 +239,7 @@ body {
     .hero-image-container {
         display: block;
         width: 412px;
-        height: 648px;
+        height: 640px;
 
         /* APLICA A ANIMAÇÃO DE SLIDE-IN */
         animation: slideInFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -394,7 +415,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 240px;
 }
 
 .card-container {
@@ -409,7 +430,7 @@ body {
     padding: 20px;
     box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
     width: 100%;
-    height: 100%;
+    height: 190px;
 
     /* Posicionamento para sobrepor um ao outro */
     position: absolute;
@@ -538,11 +559,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 200px;
 }
 
 .testimonial-image-container {
-    width: 100%;
+    width: 80%;
     max-width: 444px; /* Limita o tamanho no mobile */
 }
 
@@ -570,7 +590,7 @@ body {
 }
 
 .testimonial-divider {
-    width: 180px; /* Ajustado para mobile */
+    width: 60vw; /* Ajustado para mobile */
 }
 
 .testimonial-quote {
@@ -581,7 +601,7 @@ body {
 .testimonial-quote p {
     margin: 0 0 20px 0; /* Espaço entre o texto e o autor */
     font-weight: 400; /* Regular */
-    font-size: 18px; /* Ajustado para mobile */
+    font-size: 14px; /* Ajustado para mobile */
     line-height: 1.7; /* Melhora a legibilidade */
     color: #333333;
 }
@@ -683,8 +703,8 @@ body {
 }
 
 .project-divider {
-    width: 100%;
-    max-width: 536px;
+    width: 70%;
+    height: 10px;
 }
 
 .projects-grid {
@@ -797,7 +817,8 @@ body {
     background-size: cover;
     background-color: #FFFFFF;
     background-position: center;
-    padding: 60px 20px; /* Padding mobile */
+    padding: 250px 20px; /* Padding mobile */
+    height: 650px;
 }
 
 .stats-wrapper {
@@ -805,11 +826,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
 }
 
 .stat-item {
-    width: 249px; /* A largura fixa funciona bem aqui */
+    width: 10%; /* A largura fixa funciona bem aqui */
     /* 'fluxo vertical alinhamento ao centro' */
     display: flex;
     flex-direction: column;
@@ -819,20 +840,20 @@ body {
 }
 
 .stat-icon {
-    width: 130px;
-    height: 130px;
+    width: 50px;
+    height: 50px;
 }
 
 .stat-number {
     font-weight: 800; /* ExtraBold */
-    font-size: 36px;
+    font-size: 24px;
     color: #FFBB31;
     margin: 0;
 }
 
 .stat-label {
     font-weight: 800; /* ExtraBold */
-    font-size: 16px;
+    font-size: 12px;
     color: #FFFFFF;
     text-align: center;
     margin: 0;
@@ -859,8 +880,27 @@ body {
         justify-content: center;
         align-items: center;
         /* 'espaçamento entre itens 110' */
-        gap: 110px;
+        gap: 140px;
         padding: 23px 0;
+    }
+    .stat-icon {
+    width: 84px;
+    height: 84px;
+    }
+
+    .stat-number {
+        font-weight: 800; /* ExtraBold */
+        font-size: 32px;
+        color: #FFBB31;
+        margin: 0;
+    }
+
+    .stat-label {
+        font-weight: 800; /* ExtraBold */
+        font-size: 16px;
+        color: #FFFFFF;
+        text-align: center;
+        margin: 0;
     }
 }
 
@@ -882,7 +922,7 @@ body {
 }
 
 .partners-wrapper img {
-    height: 50px; /* Altura base para os logos no mobile */
+    height: 90px; /* Altura base para os logos no mobile */
     width: auto;
     max-width: 150px; /* Largura máxima para cada logo */
     object-fit: contain;
@@ -895,9 +935,9 @@ body {
 
 @media (min-width: 1280px) {
     .partners-section {
-        height: 162px;
+        height: 80px;
         /* 'esquerdo e direito 160' */
-        padding: 0 160px;
+        padding: 10 160px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -931,21 +971,23 @@ body {
     align-items: center;
     text-align: center;
     
-    padding: 100px 20px; /* Padding para mobile */
+    padding: 50px 20px; /* Padding para mobile */
+    padding-top: 20px;
 }
 
 .contact-header {
     display: flex;
+    margin-top: 110px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin-bottom: 40px; /* Espaço para o subtítulo no mobile */
+    margin-bottom: 20px; /* Espaço para o subtítulo no mobile */
 }
 
 /* Reutilizando a classe .section-title, mas podemos especificar se necessário */
 .contact-section .section-title {
     font-weight: 700; /* Bold */
-    font-size: 32px; /* Ajustado para mobile */
+    font-size: 40px; /* Ajustado para mobile */
     color: #FFFFFF; /* Cor branca para contrastar com o fundo escuro */
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     margin: 0;
@@ -953,7 +995,7 @@ body {
 
 .contact-divider {
     width: 180px; /* Ajustado para mobile */
-    filter: brightness(0) invert(1); /* Deixa o vetor SVG preto em branco */
+    margin-bottom: 30px;
 }
 
 .contact-subtitle {
@@ -967,9 +1009,9 @@ body {
 
 .contact-button {
     /* Dimensões e estilo do botão */
-    width: 100%;
+    width: 85%;
     max-width: 406px;
-    height: 98px;
+    height: 78px;
     background-color: #FFBB31;
     border-radius: 10px;
 
@@ -999,16 +1041,16 @@ body {
 
 @media (min-width: 1024px) {
     .contact-section {
-        height: 450px;
+        height: 550px;
         justify-content: center; /* Alinha o conteúdo verticalmente no centro */
-        /* 'espaçamento superior 200 e inferior 70' */
-        padding: 200px 20px 70px;
+        /* 'espaçamento superior 200 e inferior 100' */
+        padding: 200px 20px 100px;
         /* 'espaçamento entre itens de 50' */
         gap: 50px;
     }
 
     .contact-header {
-        height: 78.3px;
+        height: 100px;
         margin-bottom: 0; /* Remove a margem para usar o gap do pai */
     }
 
@@ -1076,6 +1118,7 @@ body {
         /* '1263 de largura por 707 de altura' */
         width: 1263px;
         height: 707px;
+        margin-bottom: 100px;
     }
 }
 
@@ -1086,6 +1129,7 @@ body {
     background-image:url('../images/Frase\ Section\ Background.png');
     background-size: cover;
     background-position: center;
+    height: 70px;
 
     /* 'fluxo vertical' e 'alinhamento central' */
     display: flex;
