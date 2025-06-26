@@ -1,29 +1,56 @@
 // Aguarda o documento HTML ser completamente carregado
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ==============================================
+    // =     CÓDIGO PARA O MENU SANDUÍCHE           =
+    // ==============================================
+    const menuHamburguer = document.querySelector('.menu-hamburguer');
+    const navMenu = document.querySelector('.header-nav');
+    const navLinks = document.querySelectorAll('.header-nav a');
+
+    // Função que abre ou fecha o menu
+    function toggleMenu() {
+        menuHamburguer.classList.toggle('menu-aberto');
+        navMenu.classList.toggle('menu-aberto');
+    }
+
+    // Adiciona o evento de clique ao botão do hambúrguer
+    if (menuHamburguer) {
+        menuHamburguer.addEventListener('click', toggleMenu);
+    }
+
+    // Fecha o menu quando um link é clicado
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('menu-aberto')) {
+                toggleMenu();
+            }
+        });
+    });
+
+
+    // ==============================================
+    // =     CÓDIGO PARA O CONTADOR ANIMADO         =
+    // ==============================================
+    // (Seu código original continua aqui)
+
     // Função que anima o contador
     const animateCounter = (element) => {
         const goal = parseInt(element.dataset.goal, 10);
-        // Pega o prefixo e o sufixo dos atributos data-*. Se não existirem, usa uma string vazia.
         const prefix = element.dataset.prefix || '';
         const suffix = element.dataset.suffix || '';
-
-        const duration = 2000; // 2 segundos para a animação
-        const stepTime = 20; // Atualiza a cada 20ms
+        const duration = 2000;
+        const stepTime = 20;
         const totalSteps = duration / stepTime;
         const increment = goal / totalSteps;
-        
         let currentNumber = 0;
 
         const timer = setInterval(() => {
             currentNumber += increment;
-
             if (currentNumber >= goal) {
                 clearInterval(timer);
-                // Monta o texto final com prefixo + número + sufixo
                 element.innerText = prefix + goal.toLocaleString('pt-BR') + suffix;
             } else {
-                // Monta o texto durante a animação com prefixo + número + sufixo
                 element.innerText = prefix + Math.ceil(currentNumber).toLocaleString('pt-BR') + suffix;
             }
         }, stepTime);
@@ -32,18 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // O "Vigia" que observa a seção
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-            // Se a seção estiver visível na tela
             if (entry.isIntersecting) {
-                // Seleciona todos os contadores e inicia a animação para cada um
                 const counters = document.querySelectorAll('.stat-number');
                 counters.forEach(counter => {
-                    // Adiciona uma verificação para não animar novamente
                     if (!counter.hasAttribute('data-animated')) {
                         animateCounter(counter);
                         counter.setAttribute('data-animated', 'true');
                     }
                 });
-                // Para de observar depois que a animação começou para todos os contadores
                 observer.unobserve(entry.target);
             }
         });
@@ -56,4 +79,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (resultsSection) {
         observer.observe(resultsSection);
     }
+
 });

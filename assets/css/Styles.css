@@ -1241,3 +1241,114 @@ body {
         padding: 35px 40px; 
     }
 }
+
+/* 1. Estilos para o ícone do hambúrguer */
+.menu-hamburguer {
+    display: none; /* Escondido por padrão (no desktop) */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.menu-hamburguer span {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: #333; /* Cor das barras - sinta-se à vontade para mudar */
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+/* 2. Media Query: Aplica os estilos apenas em telas menores (móveis) */
+@media (max-width: 768px) {
+
+    /* Mostra o ícone do hambúrguer no mobile (sem alterações aqui) */
+    .menu-hamburguer {
+        display: flex;
+        position: absolute;
+        top: 25px;
+        right: 45px;
+    }
+
+    /* --- PRINCIPAIS MUDANÇAS AQUI --- */
+    /* Transforma a navegação em um painel lateral */
+    .header-nav {
+        position: fixed;
+        top: 0;
+        /* Alinhado à direita e com 35% de largura */
+        right: 0;
+        left: auto;
+        width: 35%; /* Ocupa 35% da tela */
+        min-width: 250px; /* Garante que não fique fino demais em telas pequenas */
+        height: 100vh;
+        
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(8px);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1); /* Sombra à esquerda */
+        z-index: 1000;
+        
+        display: flex;
+        
+        /* Esconde o menu fora da tela à direita */
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    }
+
+    /* Classe que torna o menu visível, deslizando para a posição correta */
+    .header-nav.menu-aberto {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+    }
+
+    /* Estiliza a lista de links para ficar vertical e alinhada */
+    .header-nav ul {
+        width: 100%; /* Ocupa todo o painel */
+        flex-direction: column;
+        text-align: center; /* Alinha todo o texto ao centro */
+        padding: 8rem 2rem 2rem 2rem; /* Espaçamento interno (topo, lados, baixo) */
+    }
+
+    .header-nav li {
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Estilo dos links (Inter, cinza) */
+    .header-nav a {
+        font-family: 'Inter', sans-serif; /* Define a fonte Inter */
+        font-size: 1.1rem; 
+        font-weight: 500; /* Um peso de fonte médio */
+        color: #4A4A4A; /* Tom de cinza escuro */
+        padding: 1rem 0; /* Espaçamento vertical entre os links */
+        display: block;
+        transition: color 0.2s;
+    }
+
+    /* Efeito ao passar o mouse ou tocar */
+    .header-nav a:hover {
+        color: #000000; /* Fica preto ao interagir */
+    }
+}
+
+/* 3. Animação do ícone para virar um "X" */
+.menu-hamburguer.menu-aberto .bar1 {
+    transform: rotate(45deg);
+}
+
+.menu-hamburguer.menu-aberto .bar2 {
+    opacity: 0;
+}
+
+.menu-hamburguer.menu-aberto .bar3 {
+    transform: rotate(-45deg);
+}
