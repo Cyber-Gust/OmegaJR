@@ -12,7 +12,7 @@ body {
     /* 2. APLICANDO A FONTE 'INTER' A TODO O SITE */
     /* A segunda fonte ('sans-serif') serve como um fallback caso 'Inter' não carregue. */
     font-family: 'Inter', sans-serif;
-    background-color: #f0f2f5; /* Um cinza claro para ver o contêiner branco se destacar */
+    background-color: #ffffff; /* Um cinza claro para ver o contêiner branco se destacar */
 }
 
 .home-container {
@@ -31,10 +31,11 @@ body {
 
 /* 5. MEDIA QUERY: AJUSTE PARA TELAS MAIORES */
 /* Quando a tela tiver no MÍNIMO 768px de largura (tablets e desktops)... */
-@media (min-width: 768px) {
+@media (min-width: 1240px) {
     .home-container {
         /* ...aumentamos o padding lateral para o valor do seu design original. */
         padding: 0 20px;
+        align-items: center;
     }
 }
 
@@ -105,10 +106,11 @@ body {
 }
 
 /* Para telas maiores (tablets e desktops) */
-@media (min-width: 1024px) {
+@media (min-width: 1240px) {
     /* Reexibimos o menu de navegação */
     .header-nav {
         display: block;
+        padding-right: 20px;
     }
 
     .site-header .logo img {
@@ -224,31 +226,31 @@ body {
 /* Substitua o seu bloco @media por este.                 */
 /* ======================================================= */
 
-@media (min-width: 1200px) {
+@media (min-width: 1240px) {
 
     .hero-section {
         flex-direction: row;
-        gap: 400px; 
+        gap: calc(150px + (100vw - 1240px) * 0.6);
         text-align: left;
-        height: 650px;
-        padding: 0 80px 0 200px;
+        height: 580px;
+        align-items: center;
+        padding: 0px 80px 0 120px;
         /* Adicionado para esconder o overflow da animação inicial */
         overflow-x: hidden; 
+        overflow-y: hidden;
     }
     
     .hero-image-container {
         display: block;
-        width: 412px;
-        height: 640px;
-
-        /* APLICA A ANIMAÇÃO DE SLIDE-IN */
+        margin-left: auto;
+        /*APLICA A ANIMAÇÃO DE SLIDE-IN */
         animation: slideInFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
     .hero-image-container img {
-        width: 100%;
-        height: 100%;
         object-fit: contain;
+        height: 590px;
+        padding-top: 10px;
     }
 
     .hero-content {
@@ -257,6 +259,7 @@ body {
         gap: auto;
         height: 300px;
         width: 585px;
+        margin-right: auto;
 
         /* APLICA A ANIMAÇÃO DE FADE-IN */
         /* Começa invisível para a animação funcionar */
@@ -346,20 +349,21 @@ body {
 /* ESTILOS DA ABOUT SECTION PARA DESKTOP (Layout do Figma) */
 /* ======================================================= */
 
-@media (min-width: 1280px) {
+@media (min-width: 1240px) {
 
     .about-section {
-        height: 530px;
+        height: 680px;
         /* Reverte para o layout horizontal do Figma */
         flex-direction: row;
-        justify-content: flex-start; /* Alinhamento à esquerda */
+        gap: calc(150px + (100vw - 1240px) * 0.2);
+        justify-content: center; /* Alinhamento à esquerda */
         align-items: center
         ;
         
         /* 'margem esquerda 160 margem direita a 60' */
-        padding: 0 60px 0 250px;
+        padding: 0 60px 0 80px;
         /* 'espaço de 135' */
-        gap: 350px;
+        gap: aut;
     }
 
     /* Restauramos a ordem para o layout do Figma */
@@ -367,8 +371,8 @@ body {
     .about-content { order: 1; }
 
     .about-content {
-        width: 496px;
-        height: 334px;
+        width: 700px;
+        height: 380px;
         align-items: flex-start; /* Alinha o texto à esquerda */
         text-align: justify;
         justify-content: flex-start; /* Alinha o conteúdo ao topo */
@@ -385,17 +389,14 @@ body {
     }
 
     .about-text {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .about-image-container {
-        width: 546px;
-        height: 364px;
+        margin-top: 0px;
     }
 
-    .about-image-container img {
-        height: 100%;
-        object-fit: cover; /* Garante que a imagem preencha o container sem distorcer */
+    .about-image-container img { /* Garante que a imagem preencha o container sem distorcer */
         /* 'raio de canto 15' */
         border-radius: 15px; 
         /* 'efeito sombreado X0Y0 desfoque oito' */
@@ -520,7 +521,7 @@ body {
 /* ESTILOS DA CARD SECTION PARA DESKTOP (Layout do Figma)  */
 /* ======================================================= */
 
-@media (min-width: 1440px) {
+@media (min-width: 1240px) {
 
     .card-section {
         height: 400px;
@@ -535,16 +536,16 @@ body {
         height: 219px;
         flex-direction: row; /* Volta a ser horizontal */
         justify-content: center;
-        gap: 40px;
+        gap: calc(40px + (100vw - 1240px) * 0.14);
     }
 
     /* Definindo os tamanhos exatos dos cards para desktop */
     .card-container.card-size-small {
-        width: 415px;
+        width: 350px;
         height: 180px;
     }
     .card-container.card-size-large {
-        width: 472px;
+        width: 400px;
         height: 219px;
     }
 }
@@ -618,18 +619,19 @@ body {
 /* ESTILOS DA DEPOIMENTO SECTION PARA DESKTOP (Layout do Figma) */
 /* ======================================================= */
 
-@media (min-width: 1280px) {
+@media (min-width: 1240px) {
 
     .testimonial-section {
         height: 769px;
         flex-direction: row; /* Volta ao layout horizontal */
         justify-content: center;
         align-items: center;
+        padding: 0px 150px;
+        gap: calc(100px + (100vw - 1240px) * 0.14);
 
         /* 'espaçamento esquerdo 141 espaçamento direito 160' */
-        padding: 0;
+
         /* 'espaço entre itens 135' */
-        gap: 300px;
     }
 
     .testimonial-image-container {
@@ -646,11 +648,11 @@ body {
     
     .testimonial-content {
         width: 584px;
-        height: 569px;
-        margin-top: 40px;
+        margin: 0;
         background: transparent;
         align-items: flex-start; /* Alinhamento à esquerda */
         text-align: left;
+        
         /* 'espaçamento entre as de 31' */
         gap: 31px;
     }
@@ -664,7 +666,8 @@ body {
     }
 
     .testimonial-quote p {
-        font-size: 20px;
+        font-size: 18px;
+        text-align: justify;
     }
 
     .testimonial-quote cite {
@@ -708,7 +711,6 @@ body {
 }
 
 .projects-grid {
-    width: 100%;
     display: flex;
     flex-direction: column; /* Empilha os projetos no mobile */
     align-items: center;
@@ -741,7 +743,7 @@ body {
 /* ESTILOS DA PROJECTS SECTION PARA DESKTOP (Layout do Figma) */
 /* ======================================================= */
 
-@media (min-width: 1440px) {
+@media (min-width: 1240px) {
 
     .project-section {
         height: 450px;
@@ -749,10 +751,12 @@ body {
         padding: 70px 20px 50px; 
         /* 'espaço entre itens de 80' */
         gap: 80px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .project-header {
-        width: 1358px; /* Largura igual à do grid abaixo */
+        padding-left: 50px;
         align-items: flex-start; /* Alinhamento à esquerda, como no seu plano */
         text-align: left;
     }
@@ -766,13 +770,11 @@ body {
     }
 
     .projects-grid {
-        width: 1358px;
         height: 270px;
         flex-direction: row; /* Volta ao layout horizontal */
         align-items: center;
-        justify-content: flex-start; /* Alinha os cards à esquerda do container */
-        /* 'espaçamento entre itens 53' */
-        gap: 53px;
+        margin: 0;
+        gap: calc(30px + (100vw - 1240px) * 0.3);
     }
 
     /* Estilos específicos para cada card no desktop */
@@ -783,29 +785,30 @@ body {
     
     /* Para não precisarmos de classes extras, usamos :nth-child() */
     .projects-grid .project-card:nth-child(1) {
-        width: 396px;
+        width: 350px; height: 240;
     }
     .projects-grid .project-card:nth-child(1) .project-image {
-        width: 392px; height: 220px;
+        width: 100%; height: 220px;
     }
 
     .projects-grid .project-card:nth-child(2) {
-        width: 446px;
+        width: 350px; height: 240;
     }
     .projects-grid .project-card:nth-child(2) .project-image {
         width: 100%; /* Usamos 100% para evitar o overflow */
-        height: 221px; 
+        height: 220px; 
     }
 
     .projects-grid .project-card:nth-child(3) {
-        width: 408px;
+    width: 350px; height: 240;
     }
     .projects-grid .project-card:nth-child(3) .project-image {
-        width: 408px; height: 220px;
+        width: 350px; height: 220px;
     }
 
     .project-caption {
-        font-size: 20px;
+        font-size: 18px;
+        text-align: left;
     }
 }
 
@@ -863,7 +866,7 @@ body {
 /* ======================================================= */
 /* ESTILOS DA RESULTS SECTION PARA DESKTOP (Layout do Figma) */
 /* ======================================================= */
-@media (min-width: 1280px) {
+@media (min-width: 1240px) {
     .results-section {
         height: 508px;
         display: flex;
@@ -880,7 +883,7 @@ body {
         justify-content: center;
         align-items: center;
         /* 'espaçamento entre itens 110' */
-        gap: 140px;
+        gap: 190px;
         padding: 23px 0;
     }
     .stat-icon {
@@ -933,7 +936,7 @@ body {
 /* ESTILOS DA PARTNERS SECTION PARA DESKTOP (Layout do Figma) */
 /* ======================================================= */
 
-@media (min-width: 1280px) {
+@media (min-width: 1240px) {
     .partners-section {
         height: 80px;
         /* 'esquerdo e direito 160' */
@@ -1369,16 +1372,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 40px;
+    
 }
 
 /* Animação ao passar o mouse: move o botão para cima */
 .whatsapp-float:hover {
     transform: translateY(-10px);
     box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.3);
+    
 }
 
 /* Estilo para o ÍCONE DE IMAGEM dentro do botão */
 .whatsapp-icon {
     width: 65px;
     height: 65px;
+    
 }
