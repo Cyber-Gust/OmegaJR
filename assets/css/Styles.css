@@ -910,58 +910,76 @@ body {
 /* --- Estilos da Partners Section --- */
 
 .partners-section {
-    margin-top: 80px;
-    gap: 40px; /* Espaçamento entre os logos */
+    margin-top: 30px;
     background-color: #FFFFFF;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 70px;
+    padding-bottom: 0px;
+    overflow: hidden; 
 }
 
 .section-title {
     font-size: 48px;
     text-align: center;
+    margin-bottom: 110px; /* Adicionado um espaçamento do título */
+}
+
+/* NOVO: Container para o carrossel */
+.partners-container {
+    width: 100%;
+    display: flex;
+    position: relative;
 }
 
 .partners-wrapper {
     display: flex;
     align-items: center;
-    padding-left: 60px;
-    justify-content: center;
-    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
-    gap: 50px 80px; /* Espaçamento vertical e horizontal para mobile */
+    justify-content: flex-start; /* Alinha os itens no início */
+    flex-wrap: nowrap; /* Garante que os itens fiquem em uma única linha */
+    gap: 80px; /* Espaçamento padrão */
+    padding: 0 40px; /* Um pouco de padding nas laterais */
+
+    /* NOVO: A mágica da animação acontece aqui! */
+    animation: scroll 30s linear infinite;
 }
 
+/* NOVO: Pausa a animação quando o mouse está sobre o carrossel */
+.partners-wrapper:hover {
+    animation-play-state: paused;
+}
+
+/* NOVO: Definição da animação */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Move para a esquerda pela metade da largura total.
+           Como duplicamos o conteúdo, isso move exatamente
+           o primeiro conjunto de logos para fora da tela. */
+        transform: translateX(-50%);
+    }
+}
+
+
 .partners-wrapper img {
-    height: 90px; /* Altura base para os logos no mobile */
+    height: 90px;
     width: auto;
-    max-width: 150px; /* Largura máxima para cada logo */
+    max-width: 150px;
     object-fit: contain;
+    flex-shrink: 0; /* Impede que as imagens encolham */
 }
 
 
 /* ======================================================= */
-/* ESTILOS DA PARTNERS SECTION PARA DESKTOP (Layout do Figma) */
+/* ESTILOS DA PARTNERS SECTION PARA DESKTOP */
 /* ======================================================= */
 
 @media (min-width: 1240px) {
-    .partners-section {
-        height: 80px;
-        /* 'esquerdo e direito 160' */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     .partners-wrapper {
-        flex-wrap: nowrap; /* Impede a quebra de linha no desktop */
-        max-width: none; /* Remove a limitação de largura */
-        /* 'espaçamento entre item 190' */
         gap: 190px;
     }
     
     .partners-wrapper img {
-        height: 100px; /* A altura se ajusta à largura original */
+        height: 100px;
     }
 }
 
@@ -1190,64 +1208,162 @@ body {
     }
 }
 
-/* --- Estilos do Footer --- */
+/* ======================================================= */
+/* NOVO FOOTER - SUBSTITUA OS ESTILOS ANTIGOS POR ESTES    */
+/* ======================================================= */
 
-.site-footer {
-    background-color: #FFFFFF;
-    padding: 30px 20px; /* Padding para mobile */
-
-    /* Layout Mobile (Vertical) */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
-    border-top: 1px solid #E5E7EB; /* Uma linha sutil para separar do conteúdo */
+.new-site-footer {
+    background-color: #1E1E1E; /* Cinza escuro, quase preto */
+    color: #A0A0A0; /* Cinza claro para os textos */
+    font-family: 'Inter', sans-serif;
+    padding-top: 50px;
 }
 
-.copyright-text {
-    /* 'regular 12 8E8E8E' */
-    font-size: 12px;
-    font-weight: 400;
-    color: #8E8E8E;
+.footer-container {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+/* --- Parte Superior do Footer (Colunas) --- */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+    gap: 40px;
+    padding-left: 190px;
+    margin-bottom: 40px;
+}
+
+.footer-column {
+    flex: 1; /* Faz as colunas tentarem ocupar o mesmo espaço */
+    min-width: 220px; /* Largura mínima antes de quebrar a linha */
+}
+
+.footer-column h4 {
+    color: #FFBB31; /* Amarelo da sua paleta */
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block; /* Para o sublinhado se ajustar ao texto */
+}
+
+/* Efeito de sublinhado amarelo */
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40%;
+    height: 2px;
+    background-color: #FFBB31;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
-.social-icons {
+.footer-column li {
+    margin-bottom: 15px;
+}
+
+.footer-column a {
+    color: #A0A0A0;
+    text-decoration: none;
     display: flex;
     align-items: center;
-    /* 'espaçamento entre eles 15 Pixel' */
-    gap: 15px;
+    gap: 12px;
+    transition: color 0.3s ease;
 }
 
-.social-icons a {
-    display: inline-block;
-    transition: transform 0.2s ease-in-out;
+.footer-column a:hover {
+    color: #FFFFFF; /* Efeito de hover para branco */
 }
 
-.social-icons a:hover {
-    transform: scale(1.15); /* Efeito de zoom ao passar o mouse */
+.footer-icon {
+    width: 20px;
+    height: 20px;
 }
 
-.social-icons img {
-    width: 22px;
-    height: 22px;
+/* --- Divisor e Parte Inferior --- */
+.footer-divider {
+    border: none;
+    height: 1px;
+    background-color: #333333; /* Linha divisória sutil */
 }
 
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 12px;
+}
 
-/* ======================================================= */
-/* ESTILOS DO FOOTER PARA DESKTOP (Layout do Figma)        */
-/* ======================================================= */
+.footer-logo {
+    height: 35px; /* Tamanho ajustado da logo Ômega */
+    opacity: 0.8;
+}
 
-@media (min-width: 768px) {
-    .site-footer {
-        height: 40px;
-        flex-direction: row; /* Volta ao layout horizontal */
-        /* Empurra o copyright para a esquerda e os ícones para a direita */
-        justify-content: space-between;
-        
-        /* 'margem de 40' left/right, 'margem de 35' top/bottom */
-        padding: 35px 40px; 
+.footer-bottom-middle p {
+    margin: 0;
+    color: #8E8E8E;
+}
+
+.developer-credit-new {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #A0A0A0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.developer-credit-new:hover {
+    color: #FFFFFF;
+}
+
+.developer-credit-new strong {
+    font-weight: 700; /* "Desenvolvido por" em negrito */
+}
+
+.developer-logo {
+    height: 24px;
+}
+
+/* --- Responsividade para Mobile --- */
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        text-align: center; /* Centraliza o texto */
+        align-items: center;
+        gap: 40px;
+        padding-left: 20px;
+        margin-bottom: 40px;
+
+    } 
+    
+    .footer-bottom {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        text-align: center; /* Centraliza o texto */
+        align-items: center;
+    }
+
+    .footer-column h4::after {
+        left: 50%;
+        transform: translateX(-50%); /* Centraliza o sublinhado */
+    }
+
+    .footer-column a {
+        justify-content: center; /* Centraliza os ícones e textos dos links */
     }
 }
 
