@@ -77,7 +77,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pede ao vigia para observar a nossa seção de resultados
     const resultsSection = document.querySelector('.results-section');
     if (resultsSection) {
+       
         observer.observe(resultsSection);
     }
 
+});
+
+window.addEventListener("load", function() {
+    const loader = document.getElementById("loading-screen");
+    
+    // Adiciona a classe que faz o fade-out
+    if (loader) {
+        loader.classList.add("hide");
+        
+        // Remove o elemento do HTML após a transição terminar para liberar memória
+        loader.addEventListener("transitionend", function() {
+            loader.remove();
+        });
+    }
 });
