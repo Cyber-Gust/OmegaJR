@@ -64,7 +64,7 @@ body {
 /* O logo já tem o tamanho definido no HTML, o que é ótimo para performance. */
 .site-header .logo img {
     display: block; /* Remove qualquer espaçamento extra que o navegador possa adicionar a uma imagem */
-    width: 80%;
+    width: 60%;
     height: 80%; /* Largura fixa para o logo */
 }
 
@@ -115,7 +115,7 @@ body {
 
     .site-header .logo img {
     display: block; /* Remove qualquer espaçamento extra que o navegador possa adicionar a uma imagem */
-    width: 100%;
+    width: 35%;
     height: 100%; /* Largura fixa para o logo */
     }
 
